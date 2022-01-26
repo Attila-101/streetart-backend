@@ -1,0 +1,13 @@
+{
+  "name": "StreetArtBackend",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/Attila-101/streetart-backend.git",
+  "author": "Attila <71675386+Attila-101@users.noreply.github.com>",
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.2",
+    "mongoose": "^6.1.8"
+  }
+}
