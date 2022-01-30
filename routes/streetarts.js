@@ -1,14 +1,35 @@
 let mongoose = require('mongoose'),
     express = require('express'),
     router = express.Router()
+    const multer = require("multer");
+    const {
+      GridFsStorage
+    } = require("multer-gridfs-storage");
 
+    const storage = new GridFsStorage({
+        url: process.env.DATABASE_URL,
+        file: (req, file) => {
+          return new Promise((resolve, reject) => {
+            const filename = file.originalname;
+            const fileInfo = {
+              filename: filename,
+              bucketName: "newBucket"
+            };
+            resolve(fileInfo);
+          });
+        }
+      });
+      
+      const upload = multer({
+        storage
+      });
 
     //create a model 
     let Streetart = require('../models/Streetart')
 
 
     //post a piece 
-    router.post('/add', async (req,res)=>{
+    router.post('/add', upload.single("image"), async (req,res)=>{
 
         const streetart = new Streetart({
             _id:req.body._id,
@@ -16,7 +37,7 @@ let mongoose = require('mongoose'),
             artist:req.body.artist,
             year:req.body.year,
             active:req.body.active,
-            image:req.body.image,
+            image:req.file.originalname,
             thumbnail:req.body.thumbnail,
             zip:req.body.zip,
             street:req.body.street,
@@ -40,7 +61,7 @@ let mongoose = require('mongoose'),
 //Get All pieces
 
 
-router.get('/get',async (req,res) =>{
+router.get('/get',async (req, res) =>{
     try {
         const streetarts = await Streetart.find()
         res.json(streetarts)
