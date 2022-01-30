@@ -14,7 +14,8 @@ const streetartSchema = new Schema({
     active: {type:Boolean
         },
     image: {type: String,
-            required:true
+            required:[true,"image url required"],
+            unique: true
         },
     thumbnail: {type:String
         },
@@ -36,21 +37,19 @@ const streetartSchema = new Schema({
     social: {
             originalPoster:{type:String
             },
-            likes:{type:Number
+            likes:{type:[String],
+                default:[]
             },
-            comments:{type:Array
-            }
-        },
-
-        
-    dateCreate:{type:Date
-            },
-    dateEdit:{type:Date
-            }
+            comments:{type:[Object],
+                default:[]            }
+        }},{
+            timestamps: true,
+            collection: 'streetarts'
+         }
         
         
     
-}
+
 
 
 );

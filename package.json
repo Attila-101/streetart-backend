@@ -6,11 +6,17 @@
   "author": "Attila <71675386+Attila-101@users.noreply.github.com>",
   "license": "MIT",
   "scripts": {
-    "devStart": "nodemon server.js"},
+    "devStart": "nodemon server.js"
+  },
   "dependencies": {
+    "bcrypt": "^5.0.1",
+    "body-parser": "^1.19.1",
     "cors": "^2.8.5",
     "express": "^4.17.2",
-    "mongoose": "^6.1.8"
+    "jsonwebtoken": "^8.5.1",
+    "mongodb-memory-server": "^8.2.0",
+    "mongoose": "^6.1.8",
+    "validator": "^13.7.0"
   },
   "devDependencies": {
     "dotenv": "^14.3.2",
