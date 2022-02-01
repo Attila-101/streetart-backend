@@ -22,9 +22,9 @@ POST http://localhost:3007/api/signup
 Content-Type: application/json
 
 {
-     "username": "admin2",
-    "email": "admin@ab.ba",
-    "password": "admin123"
+     "username": "adminsdd",
+    "email": "admidsdn@ab.ba",
+    "password": "addsafasfas"
 
 }
 
@@ -57,7 +57,7 @@ GET http://localhost:3007/streetarts/get/byid/61f359443eec50f862
 ###
 
 //Get by name (is in the collection)(200)
-GET http://localhost:3007/streetarts/get/bytitle/Eagle
+GET http://localhost:3007/posts/bytitle/Eagle
 ###
 
 //Get by name (it is not in the collection) (?????)

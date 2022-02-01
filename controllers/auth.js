@@ -40,21 +40,21 @@ const createToken = (email, id) => {
 };
 
 
-// module.exports.signup2 = async (req, res) => {
-//   const { email, password } = req.body;
+module.exports.signup2 = async (req, res) => {
+  const {username, email, password } = req.body;
 
-//   try {
-//     const user = await User.create({ email, password });
-//     const token = createToken(user._id);
-//     res.cookie('jwt', token, { httpOnly: true, maxAge: maxAge * 1000 });
-//     res.status(201).json({ user: user._id });
-//   }
-//   catch(err) {
-//     const errors = handleErrors(err);
-//     res.status(400).json({ errors });
-//   }
+  try {
+    const user = await User.create({ username,email, password });
+    const token = createToken(user._id);
+    res.cookie('jwt', token, { httpOnly: true, sameSite: 'none', secure: true, maxAge: maxAge * 1000 });
+    res.status(201).json({ user: user._id });
+  }
+  catch(err) {
+    const errors = handleErrors(err);
+    res.status(400).json({ errors });
+  }
  
-// }
+}
 
 
 //Signup && Singnin modules
