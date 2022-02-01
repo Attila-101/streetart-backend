@@ -8,7 +8,7 @@ const { json } = require("body-parser");
 //handle errors:
 
 const handleErrors = (err) => {
-  console.log(err.message, err.code);
+  console.log(err, err.code);
   let errors = { username: "", email: "", password: "", confirm_password: "" };
 
   //validation errors:
@@ -38,6 +38,24 @@ const createToken = (email, id) => {
     expiresIn: maxAge,
   });
 };
+
+
+// module.exports.signup2 = async (req, res) => {
+//   const { email, password } = req.body;
+
+//   try {
+//     const user = await User.create({ email, password });
+//     const token = createToken(user._id);
+//     res.cookie('jwt', token, { httpOnly: true, maxAge: maxAge * 1000 });
+//     res.status(201).json({ user: user._id });
+//   }
+//   catch(err) {
+//     const errors = handleErrors(err);
+//     res.status(400).json({ errors });
+//   }
+ 
+// }
+
 
 //Signup && Singnin modules
 

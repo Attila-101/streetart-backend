@@ -4,16 +4,17 @@ const router = express.Router();
 const Streetart = require('../models/Streetart')
 
 
-const { getPost,getPosts,createPost,getPostByTitle,updatePost,deletePost,getArt } = require("../controllers/posts");
+const { getPost,getPosts,createPost,getPostByTitle,updatePost,deletePost,getArt, findTitle } = require("../controllers/posts");
 
 
 
-router.get('/', getPosts);
 router.post('/', createPost);
-router.get('/:id', getArt, getPost);
-router.get('/:title', getPostByTitle);
+router.get('/byid/:id', getArt, getPost);
+router.get('/bytitle/q=:title', getPostByTitle);
 router.patch('/:id', getArt, updatePost);
 router.delete('/:id', getArt, deletePost);
+router.get('/all/', getPosts);
+// router.get('/bytitle/q=:title',findTitle)
 // router.patch('/:id/likePost', likePost);
 
 module.exports= router;

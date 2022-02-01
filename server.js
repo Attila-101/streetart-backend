@@ -5,7 +5,7 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const authRoutes = require('./routes/auth.js')
 const postRoutes = require('./routes/posts.js')
-const StreetartModel = require("./models/Streetart");
+const cookieParser = require('cookie-parser')
 
 const app = express();
 
@@ -21,6 +21,7 @@ mongoose.connect(process.env.DATABASE_URL, {
 app.use(bodyParser.json())
 app.use(express.json())
 app.use(cors());
+app.use(cookieParser())
 
 
 app.use('/posts', postRoutes)

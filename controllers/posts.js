@@ -1,5 +1,6 @@
 const Streetart = require("../models/Streetart");
-const {json} = require("body-parser")
+const {json} = require("body-parser");
+const { Mongoose } = require("mongoose");
 //post a piece
 
 module.exports.createPost = async (req, res,next) => {
@@ -48,14 +49,15 @@ module.exports.getPost = async (req, res,next) => {
 //Get by title
 
 module.exports.getPostByTitle = async (req, res,next) => {
+  
   let arts;
   try {
-    arts = await Streetart.find({ title: req.params.title });
-
-    if ((arts.lenght = 0)) {
-      return res
-        .status(404)
-        .json({ message: `We don't have: (${title}) in our database` });
+    const title = await req.params.title
+    //regex looking in case insensitive manner, titles including {title} param 
+    arts = await Streetart.find({ title:{"$regex" : title ,$options:'i'}});
+   
+    if (arts.length === 0) {
+      return res.status(404).json({ message: `We don't have: (${title}) in our database` });
     }
     res.status(200).json(arts);
   } catch (err) {
@@ -126,7 +128,7 @@ module.exports.deletePost = async (req, res) => {
       message: `${deletedArt.title} by ${deletedArt.artist} has been deleted`,
     });
   } catch {
-    res.status(400).json({ message: err.message });
+    res.status(500).json({ message: err.message });
   }
 }
 
@@ -152,14 +154,24 @@ module.exports.getArt = async (req, res, next) =>{
 }
 
 //Like the post 
+module.exports.likePost = async (req,res)=>{
+    const {id} = req.params;
 
-// router.post('./like/:id',getArt, async (req,res)=>{
+    if(!req.userId) return res.json({message:"Unauthenticated"})
 
-//     try{
+    if(!Mongoose.Types.ObjectId.isValid(id)) return res.status(404).send(`There is no post with ${id}`)
+ 
+    const post = await Streetart.findById(id)
 
+    const index = post.social.likes.findIndex((id)=>id=== String(req.userId))
 
-//     } catch (err) {
+  
+    if (index ===-1) {
+      post.social.likes.push(req.userId)
+    } else {
+      post.social.likes = post.social.likes.filter((id)=> id!=String(req.userId))
+    }
+  
+ 
 
-//     }
-// })
-
+}
