@@ -15,6 +15,11 @@ Content-Type: application/json
 "active":false
 }
 
+
+
+
+
+
 ###
 
 //Sign up 
@@ -22,11 +27,23 @@ POST http://localhost:3007/api/signup
 Content-Type: application/json
 
 {
-     "username": "admin2",
-    "email": "admin@ab.ba",
-    "password": "admin123"
+     "username": "",
+    "email": "admin@ba",
+    "password": "admi"
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 ###

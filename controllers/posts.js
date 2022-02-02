@@ -1,6 +1,6 @@
 const Streetart = require("../models/Streetart");
 const {json} = require("body-parser");
-const { Mongoose } = require("mongoose");
+const  mongoose = require("mongoose");
 //post a piece
 
 module.exports.createPost = async (req, res,next) => {
@@ -155,23 +155,28 @@ module.exports.getArt = async (req, res, next) =>{
 
 //Like the post 
 module.exports.likePost = async (req,res)=>{
+
+
     const {id} = req.params;
 
     if(!req.userId) return res.json({message:"Unauthenticated"})
 
-    if(!Mongoose.Types.ObjectId.isValid(id)) return res.status(404).send(`There is no post with ${id}`)
+    if(!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send(`There is no post with ${id}`)
  
     const post = await Streetart.findById(id)
-
-    const index = post.social.likes.findIndex((id)=>id=== String(req.userId))
-
-  
+    
+    const index = post.social.likes.findIndex((id) => id === req.userId)
+    console.log(id)
+    console.log(index)
+    console.log(req.userId)
     if (index ===-1) {
       post.social.likes.push(req.userId)
-    } else {
-      post.social.likes = post.social.likes.filter((id)=> id!=String(req.userId))
+    }else {
+      post.social.likes = post.social.likes.filter((id)=> id !== req.userId)
     }
+    console.log(post.social.likes)
+    
+  const updatedPost = await Streetart.findByIdAndUpdate(id,post,{new:true})
   
- 
-
+  res.status(200).json(updatedPost)
 }
