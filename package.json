@@ -1,0 +1,26 @@
+{
+  "name": "street-art-backend",
+  "version": "1.0.0",
+  "main": "server.js",
+  "repository": "https://github.com/Attila-101/streetart-backend.git",
+  "author": "Attila <71675386+Attila-101@users.noreply.github.com>",
+  "license": "MIT",
+  "scripts": {
+    "devStart": "nodemon server.js"
+  },
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "body-parser": "^1.19.1",
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "express": "^4.17.2",
+    "jsonwebtoken": "^8.5.1",
+    "mongodb-memory-server": "^8.2.0",
+    "mongoose": "^6.1.8",
+    "validator": "^13.7.0"
+  },
+  "devDependencies": {
+    "dotenv": "^15.0.0",
+    "nodemon": "^2.0.15"
+  }
+}

@@ -1,0 +1,105 @@
+
+
+//Create
+POST http://localhost:3007/streetarts/add
+Content-Type: application/json
+
+{
+
+"title": "Test",
+"artist": "Tester",
+"image": "https://i.postimg.cc/4dq7hr4Z/DSC-0059.jpg",
+"thumbnail": "https://i.postimg.cc/Vr9LxZbH/DSC-0059.jpg",
+"street": "Laugavegur",
+"zip": 202,
+"active":false
+}
+
+
+
+
+
+
+###
+
+//Sign up 
+POST http://localhost:3007/api/signup
+Content-Type: application/json
+
+{
+     "username": "",
+    "email": "admin@ba",
+    "password": "admi"
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+###
+POST http://localhost:3007/api/signin
+Content-Type: application/json
+
+{
+  
+    "email": "admin@ab.ba",
+    "password": "admin123"
+  
+
+}
+
+
+###
+
+//Get by ID (id not in the collection)(404)
+GET http://localhost:3007/streetarts/get/byid/61f359443eec50f862eb8cfa
+###
+
+//Get by ID (id is in the collection)(200)
+GET http://localhost:3007/streetarts/get/byid/61f35c4f3eec50f862eb8d08
+###
+//Get by ID (id not in the ObjectId format)(500)
+GET http://localhost:3007/streetarts/get/byid/61f359443eec50f862
+
+###
+
+//Get by name (is in the collection)(200)
+GET http://localhost:3007/streetarts/get/bytitle/Eagle
+###
+
+//Get by name (it is not in the collection) (?????)
+GET http://localhost:3007/streetarts/get/bytitle/trap
+
+###
+
+//Edit lack of params in request (300)  
+PATCH http://localhost:3007/streetarts/update/61f359443eec50f862eb8cfb
+Content-Type: application/json
+
+{}
+
+###
+DELETE http://localhost:3007/61f35c4f3eec50f862eb8d08
+
+
+###
+
+PATCH http://localhost:3007/streetarts/update/61f359443eec50f862eb8cfb
+Content-Type: application/json
+
+{"artist": "Papaj2137"}
+
+
+###
+GET http://localhost:3007/posts/
+###
