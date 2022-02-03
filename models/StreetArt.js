@@ -5,14 +5,14 @@ const streetartSchema = new Schema({
   
     title: {
         type: String
-        },
+    },
     artist: {
-            type:String
-        }, 
+        type:String
+    }, 
     year: {type:Number
-        },
+    },
     active: {type:Boolean
-        },
+    },
     image: {type: String,
             required:[true,"image url required"],
             unique: true
@@ -46,7 +46,6 @@ const streetartSchema = new Schema({
             timestamps: true,
             collection: 'streetarts'
          }
-        
         
     
 

@@ -7,11 +7,11 @@ const { getPost,getPosts,createPost,getPostByTitle,updatePost,deletePost,getArt,
 
 
 
-router.post('/', createPost);
+router.post('/',auth,  createPost);
 router.get('/byid/:id', getArt, getPost);
 router.get('/bytitle/q=:title', getPostByTitle);
-router.patch('/:id', getArt, updatePost);
-router.delete('/:id', getArt, deletePost);
+router.patch('/:id', getArt,auth, updatePost);
+router.delete('/:id', getArt,auth, deletePost);
 router.get('/', getPosts);
 // router.get('/bytitle/q=:title',findTitle)
 router.patch('/:id/likePost',auth, likePost);

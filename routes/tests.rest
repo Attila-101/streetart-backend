@@ -27,8 +27,8 @@ POST http://localhost:3007/api/signup
 Content-Type: application/json
 
 {
-     "username": "",
-    "email": "admin@ba",
+     "username": "gkh",
+    "email": "admin",
     "password": "admi"
 
 }

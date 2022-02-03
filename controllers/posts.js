@@ -17,9 +17,15 @@ module.exports.createPost = async (req, res,next) => {
       street: req.body.street,
       longitude: req.body.longitude,
       latitude: req.body.latitude,
-    },
+    },social:{
+      originalPosterId:req.userId,
+      originalPoster: req.body.originalPoster
+    }
+    
   });
   try {
+
+    console.log(req)
     const newStreetart = await streetart.save();
 
     res.status(201).json(newStreetart);
