@@ -48,7 +48,7 @@ The API key need to be passed into the API as a URL parameter access_key. <br/>
 ]
 ```
 
-<img src="readMeImages/GetAllPosts.jpg">
+<img src="readmeImages/GetAllPosts.jpg">
 
 ## Get street art by id
 
@@ -77,7 +77,7 @@ The API key need to be passed into the API as a URL parameter access_key. <br/>
 }
 ```
 
-<img src="readMeImages/GetPostById.jpg">
+<img src="readmeImages/GetPostById.jpg">
 
 ## Get street art by title
 
@@ -110,7 +110,7 @@ The API key need to be passed into the API as a URL parameter access_key. <br/>
 ]
 ```
 
-<img src="readMeImages/GetPostByTitle.jpg">
+<img src="readmeImages/GetPostByTitle.jpg">
 
 ## Add a new street art
 
