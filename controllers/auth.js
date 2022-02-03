@@ -70,8 +70,8 @@ module.exports.signup = async (req, res, next) => {
 
     res.status(201).json({ result: user, token });
   } catch (err) {
-    let errors = handleErrors(err);
-    res.status(400).json(errors);
+    err = handleErrors(err);
+    res.status(400).json(err);
   }
 };
 
@@ -100,5 +100,5 @@ module.exports.signin = async (req, res, next) => {
   } catch (err) {
     res.status(500).json({ message: err });
   }
-  res.send("login ");
+ 
 };

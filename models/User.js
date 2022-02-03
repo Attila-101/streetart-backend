@@ -5,20 +5,24 @@ const bcrypt = require('bcrypt')
 let userSchema = new Schema({
    username:{
       type: String,
-      required: [true,'Please enter the username'],
-      unique:[true, 'This username is already in use']
+      required: [true,'Please enter the username.'],
+      unique:[true, 'This username is already in use.']
    },
    email: {
       type: String,
-      required: [true,'Please enter the email'],
-      unique:[true,'This email is already in use'],
+      required: [true,'Please enter the email.'],
+      unique:[true,'This email is already in use.'],
       lowertcase:true,
-      validate: [isEmail, 'Please enter a valid email ']
+      validate: [isEmail, 'Please enter a valid email.']
    },
    password: {
       type: String,
-      required: [true,'Please enter the username'],
-      minlength : [6, 'Minimum password length is 6 characters']
+      required: [true,'Please enter the password.'],
+      minlength : [6, 'Minimum password length is 6 characters.']
+   },
+   role: {
+      type:String,
+      default: "user"
    }
 },{
    timestamps: true,
