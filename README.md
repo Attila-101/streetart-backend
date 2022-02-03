@@ -133,7 +133,7 @@ Content-Type: `application/json`
 }
 ```
 
-<img src="CreateNewPost.jpg">
+<img src="readmeImages/CreateNewPost.jpg">
 
 ## Upadate existing street art
 
@@ -154,7 +154,7 @@ Request:
 }
 ```
 
-<img src="UpdatePost.jpg">
+<img src="readmeImages/UpdatePost.jpg">
 
 ## Delete existing street art
 
@@ -166,7 +166,7 @@ The posts are deleted by id.
 
 `DELETE` `http://localhost:3007/posts/61f9d2269711698300cb80b0`
 
-<img src="DeletePost.jpg">
+<img src="readmeImages/DeletePost.jpg">
 
 ## Error codes
 
